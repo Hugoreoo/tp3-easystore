@@ -16,6 +16,7 @@ public:
     [[nodiscard]] const std::string &getDesc() const;
     [[nodiscard]] int getAmount() const;
     [[nodiscard]] float getPrice() const;
+    [[nodiscard]] const std::string &getId() const;
 
     void setAmount(int amount);
 
@@ -26,10 +27,12 @@ private:
     std::string _desc;
     int _amount;
     float _price;
+    std::string _id;
 
 };
 
-[[maybe_unused]] bool isProduct(std::string title, std::string desc, int amount, float price);
+[[maybe_unused]] bool isProduct(const std::string& title, const std::string& desc, int amount, float price);
+std::string randomId(const int& len);
 
 
 #endif //TP3_PRODUCT_H

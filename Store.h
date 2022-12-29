@@ -15,6 +15,12 @@ class Store {
 public:
     Store();
 
+    void addProduct(const Product& productToAdd);
+    void printMyProducts();
+    void printProductByName(const std::string& nameToSearch);
+
+    void setAmountByName(const std::string& nameToSearch, const int& amountToChange);
+
 private:
     std::vector<Product> _products;
     //std::vector<Client> _clients;
