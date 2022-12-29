@@ -62,6 +62,19 @@ void Store::printClientById(const std::string &clientIdToPrint) {
         std::cout << "Client inexistant" << std::endl;
 }
 
+void Store::printOrders() {
+    for (auto & order : _orders) {
+        std::cout << *order;
+    }
+}
+
+void Store::printClientOrders(const Client &client) {
+    for (auto & order : _orders) {
+        if(order->getClient()->getId() == client.getId())
+            std::cout << *order;
+    }
+}
+
 void Store::addProductToClientCart(Client *client, Product *productToAdd) {
     client->addProductToCart(*productToAdd);
 }
@@ -72,5 +85,17 @@ void Store::delProductToClientCart(Client *client, Product *productToAdd) {
 
 void Store::editAmountCart(Client *client, Product *productToAdd, const int amountToChange) {
     client->editAmountCart(*productToAdd, amountToChange);
+}
+
+void Store::acceptOrder(Order *order) {
+    order->setStatus(true);
+}
+
+void Store::orderDelivered(Order *order) {
+    order->setDelivered(true);
+}
+
+void Store::createOrder(Order *order) {
+    _orders.push_back(order);
 }
 

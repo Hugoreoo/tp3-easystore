@@ -27,14 +27,20 @@ int main() {
 
     myStore.addClient(moi);
 
-    myStore.printMyClients();
+    //myStore.printMyClients();
 
     //Store::addProductToClientCart(&moi, &product1);
     //myStore.printClientById("5ZY4HSUI");
 
     Order order1(&moi, moi.getCart());
+    myStore.createOrder(&order1);
 
-    std::cout << order1;
+    Store::acceptOrder(&order1);
+    Store::orderDelivered(&order1);
+
+    //myStore.printOrders();
+
+    myStore.printClientOrders(moi);
 
     return 0;
 }

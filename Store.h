@@ -8,7 +8,7 @@
 #include <vector>
 #include "Product.h"
 #include "Client.h"
-//#include "Order.h"
+#include "Order.h"
 
 class Store {
 
@@ -20,6 +20,8 @@ public:
     void printMyClients();
     void printProductByName(const std::string& nameToSearch);
     void printClientById(const std::string& clientIdToPrint);
+    void printOrders();
+    void printClientOrders(const Client& client);
     void setAmountByName(const std::string& nameToSearch, const int& amountToChange);
 
     void addClient(const Client& clientToAdd);
@@ -27,10 +29,15 @@ public:
     static void delProductToClientCart(Client *client, Product* productToAdd);
     static void editAmountCart(Client *client, Product *productToAdd, int amountToChange);
 
+    static void acceptOrder(Order *order);
+    static void orderDelivered(Order *order);
+
+    void createOrder(Order* order);
+
 private:
     std::vector<Product *> _products;
     std::vector<Client *> _clients;
-    //std::vector<Order> _orders;
+    std::vector<Order *> _orders;
 };
 
 

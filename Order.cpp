@@ -5,7 +5,8 @@
 #include "Order.h"
 #include <utility>
 
-Order::Order(Client *client, std::vector<Product *> products, bool delivered) : _client(client), _products(std::move(products)), _delivered(delivered) {
+Order::Order(Client *client, std::vector<Product *> products, bool delivered, bool status) : _client(client), _products(std::move(products)), _delivered(delivered), _status(status), _id(
+        randomId(10)) {
     client->clearCart();
 }
 
@@ -21,8 +22,20 @@ bool Order::isDelivered() const {
     return _delivered;
 }
 
+bool Order::getStatus() const {
+    return _status;
+}
+
+const std::string &Order::getId() const {
+    return _id;
+}
+
 std::ostream &operator<<(std::ostream &os, Order &order) {
-    os << std::endl << "}=======---------| ORDER |---------======={" << std::endl;
+    os << std::endl << "}=======---------| ORDER - " << order.getId() << " |---------======={" << std::endl;
+    if(!order.getStatus())
+        os << "Unverified";
+    else
+        os << "Verified";
     os << *order.getClient();
     os << "--------------------" << std::endl;
     os << "= PRODUCTS ORDERED: " << std::endl;
@@ -33,3 +46,12 @@ std::ostream &operator<<(std::ostream &os, Order &order) {
         os << "Not Delivered Yet" << std::endl;
     return os;
 }
+
+void Order::setDelivered(bool delivered) {
+    _delivered = delivered;
+}
+
+void Order::setStatus(bool status) {
+    _status = status;
+}
+
