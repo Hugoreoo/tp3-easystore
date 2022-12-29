@@ -19,10 +19,18 @@ int main() {
     myStore.addProduct(product4);
     myStore.addProduct(product5);
 
-    myStore.printMyProducts();
+    //myStore.printMyProducts();
+
     moi.addProductToCart(product2);
     moi.addProductToCart(product4);
-    std::cout << moi;
+
+    myStore.addClient(moi);
+
+    myStore.printMyClients();
+
+    Store::addProductToClientCart(&moi, &product1);
+
+    myStore.printClientById("5ZY4HSUI");
 
     return 0;
 }

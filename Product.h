@@ -25,8 +25,8 @@ public:
 private:
     std::string _title;
     std::string _desc;
-    int _amount{};
-    float _price{};
+    int _amount;
+    float _price;
     std::string _id;
 
 };

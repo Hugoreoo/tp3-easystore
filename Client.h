@@ -16,7 +16,7 @@ public:
     [[nodiscard]] const std::string &getId() const;
     [[nodiscard]] const std::string &getName() const;
     [[nodiscard]] const std::string &getFirstname() const;
-    [[nodiscard]] const std::vector<Product> &getCart() const;
+    [[nodiscard]] const std::vector<Product *> &getCart() const;
 
     void addProductToCart(const Product& product);
     void clearCart();
@@ -30,7 +30,7 @@ private:
     std::string _id;
     std::string _name;
     std::string _firstname;
-    std::vector<Product> _cart;
+    std::vector<Product *> _cart;
 
 };
 
