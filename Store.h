@@ -6,7 +6,7 @@
 #define TP3_STORE_H
 
 #include <vector>
-//#include "Product.h"
+#include "Product.h"
 //#include "Client.h"
 //#include "Order.h"
 
@@ -16,9 +16,9 @@ public:
     Store();
 
 private:
-    //std::vector<Product> _products
-    //std::vector<Client> _clients
-    //std::vector<Order> _orders
+    std::vector<Product> _products;
+    //std::vector<Client> _clients;
+    //std::vector<Order> _orders;
 };
 
 
