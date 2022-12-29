@@ -54,6 +54,9 @@ std::ostream &operator<<(std::ostream &os, Client &client) {
     for (auto & i : clientCart) {
         os << *i;
     }
+    if(clientCart.empty())
+        os << "| Cart is empty |" << std::endl;
+
     return os;
 }
 

@@ -6,6 +6,7 @@
 #define TP3_PRODUCT_H
 
 #include <iostream>
+#include <vector>
 
 class Product {
 
@@ -21,6 +22,7 @@ public:
     void setAmount(int amount);
 
     friend std::ostream& operator<<(std::ostream &os, Product &product);
+    friend std::ostream& operator<<(std::ostream &os, const std::vector<Product *>& product);
 
 private:
     std::string _title;

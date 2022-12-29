@@ -2,6 +2,7 @@
 #include "Store.h"
 #include "Product.h"
 #include "Client.h"
+#include "Order.h"
 
 int main() {
     Store myStore;
@@ -28,9 +29,12 @@ int main() {
 
     myStore.printMyClients();
 
-    Store::addProductToClientCart(&moi, &product1);
+    //Store::addProductToClientCart(&moi, &product1);
+    //myStore.printClientById("5ZY4HSUI");
 
-    myStore.printClientById("5ZY4HSUI");
+    Order order1(&moi, moi.getCart());
+
+    std::cout << order1;
 
     return 0;
 }

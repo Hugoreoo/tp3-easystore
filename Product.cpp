@@ -41,6 +41,13 @@ std::ostream &operator<<(std::ostream &os, Product &product) {
     return os;
 }
 
+std::ostream &operator<<(std::ostream &os, const std::vector<Product *>& product) {
+    for (auto i : product) {
+        os << *i;
+    }
+    return os;
+}
+
 bool isProduct(const std::string& title, const std::string& desc, int amount, float price) {
     if(amount < 1 || price < 0)
         return false;
