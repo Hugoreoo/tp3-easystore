@@ -37,7 +37,7 @@ void Product::setAmount(int amount) {
 }
 
 std::ostream &operator<<(std::ostream &os, Product &product) {
-    os << "| " << product.getTitle() << "\t | Description: " << product.getDesc() << "\t | Price: " << product.getPrice() << "e\t | Amount: " << product.getAmount() << std::endl;
+    os << "| " << product.getTitle() << "\t\t| Description: " << product.getDesc() << "\t| Price: " << product.getPrice() << "e\t| Amount: " << product.getAmount() << std::endl;
     return os;
 }
 
