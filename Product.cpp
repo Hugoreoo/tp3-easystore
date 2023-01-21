@@ -8,12 +8,8 @@
 
 namespace product {
 
-    Product::Product(std::string title, std::string desc, int amount, float price) : _title(std::move(title)),
-                                                                                     _desc(std::move(desc)),
-                                                                                     _amount(amount), _price(price),
-                                                                                     _id(
-                                                                                             randomId(5)) {
-        bool statut = isProduct(title, desc, amount, price);
+    Product::Product(std::string  title, std::string  desc, int amount, float price) : _title(std::move(title)), _desc(std::move(desc)), _amount(amount), _price(price), _id(randomId(5)) {
+        bool statut = isProduct(amount, price);
         assert(statut && "Product is not valid");
     }
 
@@ -42,7 +38,7 @@ namespace product {
     }
 
     std::ostream &operator<<(std::ostream &os, Product &product) {
-        os << "| " << product.getTitle() << "\t\t| Description: " << product.getDesc() << "\t| Price: "
+        os << "| " << product.getTitle() << "(" << product.getId() << ")" << "\t\t| Description: " << product.getDesc() << "\t| Price: "
            << product.getPrice() << "e\t| Amount: " << product.getAmount() << std::endl;
         return os;
     }
@@ -54,7 +50,7 @@ namespace product {
         return os;
     }
 
-    bool isProduct(const std::string &title, const std::string &desc, int amount, float price) {
+    bool isProduct(const int& amount, const float& price) {
         if (amount < 1 || price < 0)
             return false;
         return true;

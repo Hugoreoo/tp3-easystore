@@ -3,13 +3,12 @@
 //
 
 #include "Client.h"
-#include <utility>
 #include <cassert>
 
 namespace client {
 
-    Client::Client(std::string name, std::string firstname) : _id(product::randomId(8)), _name(std::move(name)),
-                                                              _firstname(std::move(firstname)) {
+    Client::Client(const std::string& name, const std::string& firstname) : _id(product::randomId(8)), _name(name),
+                                                              _firstname(firstname) {
         bool statut = isClient(name, firstname);
         assert(statut && "Product is not valid");
     }
@@ -26,19 +25,16 @@ namespace client {
         return _firstname;
     }
 
+    const std::vector<product::Product *> &Client::getCart() const {
+        return _cart;
+    }
+
     void Client::addProductToCart(const product::Product &product) {
         _cart.push_back(new product::Product(product));
     }
 
     void Client::clearCart() {
         _cart.clear();
-    }
-
-    void Client::editAmountCart(const product::Product &product, int newAmount) {
-        for (auto &i: _cart) {
-            if (product.getId() == i->getId())
-                i->setAmount(newAmount);
-        }
     }
 
     void Client::delProductToCart(const product::Product &product) {
@@ -64,12 +60,15 @@ namespace client {
         return os;
     }
 
-    const std::vector<product::Product *> &Client::getCart() const {
-        return _cart;
-    }
-
     bool isClient(const std::string &name, const std::string &firstname) {
         return true;
+    }
+
+    void editAmountCart(const product::Product &product, int newAmount, const std::vector<product::Product *> &_cart) {
+        for (auto &i: _cart) {
+            if (product.getId() == i->getId())
+                i->setAmount(newAmount);
+        }
     }
 
 }

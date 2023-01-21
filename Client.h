@@ -13,7 +13,7 @@ namespace client {
     class Client {
 
     public:
-        Client(std::string name, std::string firstname);
+        Client(const std::string& name, const std::string& firstname);
 
         [[nodiscard]] const std::string &getId() const;
         [[nodiscard]] const std::string &getName() const;
@@ -22,13 +22,13 @@ namespace client {
 
         void addProductToCart(const product::Product& product);
         void clearCart();
-        void editAmountCart(const product::Product& product, int newAmount);
         void delProductToCart(const product::Product& product);
 
+        //FRIEND
         friend std::ostream& operator<<(std::ostream &os, Client &client);
 
     private:
-        std::string _id;
+        const std::string _id;
         std::string _name;
         std::string _firstname;
         std::vector<product::Product *> _cart;
@@ -36,6 +36,7 @@ namespace client {
     };
 
     [[maybe_unused]] bool isClient(const std::string& name, const std::string& firstname);
+    [[maybe_unused]] void editAmountCart(const product::Product& product, int newAmount, const std::vector<product::Product *> &_cart);
 
 }
 #endif //TP3_CLIENT_H

@@ -21,16 +21,13 @@ namespace store {
         [[nodiscard]] const std::vector<client::Client *> &getClients() const;
         [[nodiscard]] const std::vector<order::Order *> &getOrders() const;
 
-        void addProduct(const product::Product &productToAdd);
-
-        void setAmountByName(const std::string &nameToSearch, const int &amountToChange);
-        void addClient(client::Client *clientToAdd);
-        static void addProductToClientCart(client::Client *client, product::Product *productToAdd);
-        static void delProductToClientCart(client::Client *client, product::Product *productToAdd);
-        static void editAmountCart(client::Client *client, product::Product *productToAdd, int amountToChange);
-        static void acceptOrder(order::Order *order);
-        static void orderDelivered(order::Order *order);
+        void addProduct(product::Product *productToAdd);
+        void addClient(client::Client* clientToAdd);
         void createOrder(order::Order *order);
+
+        client::Client* getClientById(const std::string& id);
+        product::Product* getProductById(const std::string& id);
+        order::Order* getOrderById(const std::string& id);
 
     private:
         std::vector<product::Product *> _products;
@@ -38,16 +35,21 @@ namespace store {
         std::vector<order::Order *> _orders;
     };
 
-    //HELPER PRINT
-    [[maybe_unused]] void printMyProducts(const std::vector<product::Product *> &_products);
+    //HELPERS PRINT
+    [[maybe_unused]] void printMyProducts(const std::vector<product::Product *> &_products)  ;
     [[maybe_unused]] void printMyClients(const std::vector<client::Client *> &_clients);
     [[maybe_unused]] void printOrders(const std::vector<order::Order *> &_orders);
     [[maybe_unused]] void printProductByName(const std::string &nameToSearch, const std::vector<product::Product *> &_products);
     [[maybe_unused]] void printClientById(const std::string &clientIdToPrint, const std::vector<client::Client *>& _clients);
     [[maybe_unused]] void printClientOrders(const client::Client &client, const std::vector<order::Order *> &_orders);
 
-    //HELPER
-
+    //HELPERS
+    [[maybe_unused]] void setAmountByName(const std::string &nameToSearch, const int &amountToChange, const std::vector<product::Product *> &_products);
+    [[maybe_unused]] void addProductToClientCart(client::Client *client, product::Product *productToAdd);
+    [[maybe_unused]] void delProductToClientCart(client::Client *client, product::Product *productToAdd);
+    [[maybe_unused]] void editAmountCart(client::Client *client, product::Product *productToAdd, int amountToChange);
+    [[maybe_unused]] void acceptOrder(order::Order *order);
+    [[maybe_unused]] void orderDelivered(order::Order *order);
 
 }
 #endif //TP3_STORE_H

@@ -7,50 +7,6 @@ namespace store {
 
     Store::Store() = default;
 
-    void Store::addProduct(const product::Product& productToAdd) {
-        _products.push_back(new product::Product(productToAdd));
-    }
-
-    void Store::setAmountByName(const std::string &nameToSearch, const int &amountToChange) {
-        bool isFound = false;
-        for (auto & _product : _products) {
-            if(_product->getTitle() == nameToSearch) {
-                _product->setAmount(amountToChange);
-                isFound = true;
-            }
-        }
-        if(!isFound)
-            std::cout << "Produit inexistant" << std::endl;
-    }
-
-    void Store::addClient(client::Client* clientToAdd) {
-        _clients.push_back(clientToAdd);
-    }
-
-    void Store::addProductToClientCart(client::Client* client, product::Product *productToAdd) {
-        client->addProductToCart(*productToAdd);
-    }
-
-    void Store::delProductToClientCart(client::Client *client, product::Product *productToAdd) {
-        client->delProductToCart(*productToAdd);
-    }
-
-    void Store::editAmountCart(client::Client *client, product::Product *productToAdd, const int amountToChange) {
-        client->editAmountCart(*productToAdd, amountToChange);
-    }
-
-    void Store::acceptOrder(order::Order *order) {
-        order->setStatus(true);
-    }
-
-    void Store::orderDelivered(order::Order *order) {
-        order->setDelivered(true);
-    }
-
-    void Store::createOrder(order::Order *order) {
-        _orders.push_back(order);
-    }
-
     const std::vector<product::Product *> &Store::getProducts() const {
         return _products;
     }
@@ -61,6 +17,42 @@ namespace store {
 
     const std::vector<order::Order *> &Store::getOrders() const {
         return _orders;
+    }
+
+    void Store::addProduct(product::Product* productToAdd) {
+        _products.push_back(productToAdd);
+    }
+
+    void Store::addClient(client::Client* clientToAdd) {
+        _clients.push_back(clientToAdd);
+    }
+
+    void Store::createOrder(order::Order *order) {
+        _orders.push_back(order);
+    }
+
+    client::Client *Store::getClientById(const std::string& id) {
+        for (auto & client : _clients) {
+            if(client->getId() == id)
+                return client;
+        }
+        return nullptr;
+    }
+
+    product::Product *Store::getProductById(const std::string &id) {
+        for (auto & product : _products) {
+            if(product->getId() == id)
+                return product;
+        }
+        return nullptr;
+    }
+
+    order::Order *Store::getOrderById(const std::string &id) {
+        for (auto & order : _orders) {
+            if(order->getId() == id)
+                return order;
+        }
+        return nullptr;
     }
 
     void printMyProducts(const std::vector<product::Product *>& _products) {
@@ -78,7 +70,7 @@ namespace store {
             std::cout << *order;
     }
 
-    [[maybe_unused]] void printProductByName(const std::string& nameToSearch, const std::vector<product::Product *> &_products) {
+    void printProductByName(const std::string& nameToSearch, const std::vector<product::Product *> &_products) {
         bool isFound = false;
         for (auto & _product : _products) {
             if(_product->getTitle() == nameToSearch) {
@@ -107,6 +99,38 @@ namespace store {
             if(order->getClient()->getId() == client.getId())
                 std::cout << *order;
         }
+    }
+
+    void setAmountByName(const std::string &nameToSearch, const int &amountToChange, const std::vector<product::Product *> &_products) {
+        bool isFound = false;
+        for (auto & _product : _products) {
+            if(_product->getTitle() == nameToSearch) {
+                _product->setAmount(amountToChange);
+                isFound = true;
+            }
+        }
+        if(!isFound)
+            std::cout << "Produit inexistant" << std::endl;
+    }
+
+    void addProductToClientCart(client::Client* client, product::Product *productToAdd) {
+        client->addProductToCart(*productToAdd);
+    }
+
+    void delProductToClientCart(client::Client *client, product::Product *productToAdd) {
+        client->delProductToCart(*productToAdd);
+    }
+
+    void editAmountCart(client::Client *client, product::Product *productToAdd, const int amountToChange) {
+        client::editAmountCart(*productToAdd, amountToChange, client->getCart());
+    }
+
+    void acceptOrder(order::Order *order) {
+        order->setStatus(true);
+    }
+
+    void orderDelivered(order::Order *order) {
+        order->setDelivered(true);
     }
 
 }

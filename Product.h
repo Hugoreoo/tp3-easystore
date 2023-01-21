@@ -13,22 +13,16 @@ namespace product {
     class Product {
 
     public:
-        Product(std::string title, std::string desc, int amount, float price);
+        Product(std::string  title, std::string  desc, int amount, float price);
 
         [[nodiscard]] const std::string &getTitle() const;
-
         [[nodiscard]] const std::string &getDesc() const;
-
         [[nodiscard]] int getAmount() const;
-
         [[nodiscard]] float getPrice() const;
-
         [[nodiscard]] const std::string &getId() const;
-
         void setAmount(int amount);
 
         friend std::ostream &operator<<(std::ostream &os, Product &product);
-
         friend std::ostream &operator<<(std::ostream &os, const std::vector<Product *> &product);
 
     private:
@@ -36,12 +30,11 @@ namespace product {
         std::string _desc;
         int _amount;
         float _price;
-        std::string _id;
+        const std::string _id;
 
     };
 
-    [[maybe_unused]] bool isProduct(const std::string &title, const std::string &desc, int amount, float price);
-
+    bool isProduct(const int& amount, const float& price);
     std::string randomId(const int &len);
 
 }

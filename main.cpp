@@ -1,57 +1,192 @@
 #include <iostream>
 #include "Store.h"
-#include "Product.h"
-#include "Client.h"
-#include "Order.h"
+#include "menu_function.h"
 
 int main() {
+
     store::Store myStore;
 
-    /*std::string saisie;
+    char saisie;
 
     do {
 
-        std::cout << "}-------======( BIENVENUE SUR EASYSTORE )======-------{";
+        printMenu();
         std::cin >> saisie;
 
-    } while ((saisie != "q") && (saisie != "Q"));*/
+        switch (saisie) {
+            case '1':
+                printMenuStore();
+                std::cin >> saisie;
 
+                if(saisie == '1')
+                {
+                    std::string title, desc; int amount; float price;
+                    std::cout << "Titre: ";
+                    std::cin >> title;
+                    std::cout << "Description: ";
+                    std::cin >> desc;
+                    std::cout << "Quantite: ";
+                    std::cin >> amount;
+                    std::cout << "Prix: ";
+                    std::cin >> price;
 
-    client::Client moi("Goncalves", "Hugo");
+                    myStore.addProduct(new product::Product(title, desc, amount, price));
 
-    product::Product product1("PS4", "de sony", 4, 30);
-    product::Product product2("PS5", "de sony", 5, 300);
-    product::Product product3("Iphone", "de APPLE", 50, 1300);
-    product::Product product4("Ipad", "de APPLE", 23, 100);
-    product::Product product5("Macbook", "de APPLE", 15, 3000);
+                    std::cout << std::endl << "--[ PRODUIT CREE ]--" << std::endl;
+                }
 
-    myStore.addProduct(product1);
-    myStore.addProduct(product2);
-    myStore.addProduct(product3);
-    myStore.addProduct(product4);
-    myStore.addProduct(product5);
+                if(saisie == '2')
+                {
+                    store::printMyClients(myStore.getClients());
+                }
+                else if (saisie == '3')
+                {
+                    store::printMyProducts(myStore.getProducts());
+                }
+                else if (saisie == '4')
+                {
+                    std::string productName;
+                    std::cout << "Nom: ";
+                    std::cin >> productName;
 
-    store::printMyProducts(myStore.getProducts());
+                    store::printProductByName(productName, myStore.getProducts());
+                }
+                else if (saisie == '5')
+                {
+                    store::printOrders(myStore.getOrders());
+                }
+                else if (saisie == '6')
+                {
+                    std::string productName; int amount;
+                    std::cout << "Nom: ";
+                    std::cin >> productName;
+                    std::cout << "Nouvelle Quantite du Produit: ";
+                    std::cin >> amount;
 
-    moi.addProductToCart(product2);
-    moi.addProductToCart(product4);
+                    store::setAmountByName(productName, amount, myStore.getProducts());
+                }
 
-    myStore.addClient(&moi);
+                break;
+            case '2':
+                printMenuUser();
+                std::cin >> saisie;
 
-    store::Store::addProductToClientCart(&moi, &product1);
-    store::printClientById("5ZY4HSUI", myStore.getClients());
+                if(saisie == '1')
+                {
+                    std::string name, firstname;
+                    std::cout << "Nom: ";
+                    std::cin >> name;
+                    std::cout << "Prenom: ";
+                    std::cin >> firstname;
 
-    store::printMyClients(myStore.getClients());
+                    myStore.addClient(new client::Client(name, firstname));
 
-    order::Order order1(&moi, moi.getCart());
-    myStore.createOrder(&order1);
+                    std::cout << std::endl << "--[ CLIENT AJOUTEE ]--" << std::endl;
+                }
+                else if(saisie == '2')
+                {
+                    std::string clientId, productId;
+                    std::cout << "ID du Client: ";
+                    std::cin >> clientId;
+                    std::cout << "ID du Produit: ";
+                    std::cin >> productId;
 
-    store::Store::acceptOrder(&order1);
-    store::Store::orderDelivered(&order1);
+                    store::addProductToClientCart(myStore.getClientById(clientId), myStore.getProductById(productId));
 
-    store::printOrders(myStore.getOrders());
+                    std::cout << std::endl << "--[ PRODUIT AJOUTEE ]--" << std::endl;
+                }
+                else if(saisie == '3')
+                {
+                    std::string clientId, productId;
+                    std::cout << "ID du Client: ";
+                    std::cin >> clientId;
+                    std::cout << "ID du Produit: ";
+                    std::cin >> productId;
 
-    store::printClientOrders(moi, myStore.getOrders());
+                    store::delProductToClientCart(myStore.getClientById(clientId), myStore.getProductById(productId));
+
+                    std::cout << std::endl << "--[ PRODUIT SUPPRIME ]--" << std::endl;
+                }
+                else if (saisie == '4')
+                {
+                    std::string clientId, productId; int amount;
+                    std::cout << "ID du Client: ";
+                    std::cin >> clientId;
+                    std::cout << "ID du Produit: ";
+                    std::cin >> productId;
+                    std::cout << "Nouvelle Quantite du Produit: ";
+                    std::cin >> amount;
+
+                    store::editAmountCart(myStore.getClientById(clientId), myStore.getProductById(productId), amount);
+                }
+                else if (saisie == '5')
+                {
+                    store::printMyClients(myStore.getClients());
+                }
+                else if ((saisie == '6') || (saisie == '7'))
+                {
+                    std::string id;
+                    std::cout << "ID du Client: ";
+                    std::cin >> id;
+
+                    if (saisie == '3') store::printClientById(id, myStore.getClients());
+                    if (saisie == '4') store::printClientOrders(*myStore.getClientById(id), myStore.getOrders());
+                }
+
+                break;
+            case '3':
+                printMenuOrder();
+                std::cin >> saisie;
+
+                if(saisie == '1')
+                {
+                    std::string id;
+                    std::cout << "ID du Client: ";
+                    std::cin >> id;
+                    myStore.createOrder(new order::Order(myStore.getClientById(id), myStore.getClientById(id)->getCart()));
+
+                    std::cout << std::endl << "--[ COMMANDE CREE ]--" << std::endl;
+                }
+
+                if(saisie == '2')
+                {
+                    std::string id;
+                    std::cout << "ID de la Commande: ";
+                    std::cin >> id;
+                    store::acceptOrder(myStore.getOrderById(id));
+
+                    std::cout << std::endl << "--[ COMMANDE ACCEPTEE ]--" << std::endl;
+                }
+                else if (saisie == '3')
+                {
+                    std::string id;
+                    std::cout << "ID de la Commande: ";
+                    std::cin >> id;
+                    store::orderDelivered(myStore.getOrderById(id));
+
+                    std::cout << std::endl << "--[ COMMANDE LIVREE ]--" << std::endl;
+                }
+                else if (saisie == '4')
+                {
+                    std::string clientId, orderId;
+                    std::cout << "ID du Client: ";
+                    std::cin >> clientId;
+                    std::cout << "ID de la Commande: ";
+                    std::cin >> orderId;
+
+                    store::printClientOrders(*myStore.getClientById(clientId), myStore.getOrders());
+                }
+                else if (saisie == '5')
+                {
+                    store::printOrders(myStore.getOrders());
+                }
+
+                break;
+            default:
+                break;
+        }
+
+    } while ((saisie != 'q') && (saisie != 'Q'));
 
     return 0;
 }
