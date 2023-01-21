@@ -24,8 +24,8 @@ public:
     void printClientOrders(const Client& client);
     void setAmountByName(const std::string& nameToSearch, const int& amountToChange);
 
-    void addClient(const Client& clientToAdd);
-    static void addProductToClientCart(Client *client, Product* productToAdd);
+    void addClient(Client* clientToAdd);
+    static void addProductToClientCart(Client* client, Product* productToAdd);
     static void delProductToClientCart(Client *client, Product* productToAdd);
     static void editAmountCart(Client *client, Product *productToAdd, int amountToChange);
 

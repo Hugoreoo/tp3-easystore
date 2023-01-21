@@ -40,8 +40,8 @@ void Store::setAmountByName(const std::string &nameToSearch, const int &amountTo
         std::cout << "Produit inexistant" << std::endl;
 }
 
-void Store::addClient(const Client &clientToAdd) {
-    _clients.push_back(new Client(clientToAdd));
+void Store::addClient(Client* clientToAdd) {
+    _clients.push_back(clientToAdd);
 }
 
 void Store::printMyClients() {
@@ -75,7 +75,7 @@ void Store::printClientOrders(const Client &client) {
     }
 }
 
-void Store::addProductToClientCart(Client *client, Product *productToAdd) {
+void Store::addProductToClientCart(Client* client, Product *productToAdd) {
     client->addProductToCart(*productToAdd);
 }
 

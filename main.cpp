@@ -25,12 +25,12 @@ int main() {
     moi.addProductToCart(product2);
     moi.addProductToCart(product4);
 
-    myStore.addClient(moi);
+    myStore.addClient(&moi);
 
-    //myStore.printMyClients();
-
-    //Store::addProductToClientCart(&moi, &product1);
+    Store::addProductToClientCart(&moi, &product1);
     //myStore.printClientById("5ZY4HSUI");
+
+    myStore.printMyClients();
 
     Order order1(&moi, moi.getCart());
     myStore.createOrder(&order1);
@@ -38,7 +38,7 @@ int main() {
     Store::acceptOrder(&order1);
     Store::orderDelivered(&order1);
 
-    //myStore.printOrders();
+    myStore.printOrders();
 
     myStore.printClientOrders(moi);
 
