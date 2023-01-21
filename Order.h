@@ -7,30 +7,38 @@
 
 #include "Client.h"
 
-class Order {
+namespace order {
 
-public:
-    Order(Client *client, std::vector<Product *> products, bool delivered = false, bool status = false);
+    class Order {
 
-    [[nodiscard]] Client *getClient() const;
-    [[nodiscard]] const std::vector<Product *> &getProducts() const;
-    [[nodiscard]] bool isDelivered() const;
-    [[nodiscard]] bool getStatus() const;
-    [[nodiscard]] const std::string &getId() const;
+    public:
+        Order(client::Client *client, std::vector<product::Product *> products, bool delivered = false,
+              bool status = false);
 
-    void setDelivered(bool delivered);
-    void setStatus(bool status);
+        [[nodiscard]] client::Client *getClient() const;
 
-    friend std::ostream& operator<<(std::ostream &os, Order &order);
+        [[nodiscard]] const std::vector<product::Product *> &getProducts() const;
 
-private:
-    Client * _client;
-    std::vector<Product *> _products;
-    bool _delivered;
-    bool _status;
-    std::string _id;
+        [[nodiscard]] bool isDelivered() const;
 
-};
+        [[nodiscard]] bool getStatus() const;
 
+        [[nodiscard]] const std::string &getId() const;
 
+        void setDelivered(bool delivered);
+
+        void setStatus(bool status);
+
+        friend std::ostream &operator<<(std::ostream &os, Order &order);
+
+    private:
+        client::Client *_client;
+        std::vector<product::Product *> _products;
+        bool _delivered;
+        bool _status;
+        std::string _id;
+
+    };
+
+}
 #endif //TP3_ORDER_H

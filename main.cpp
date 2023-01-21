@@ -5,14 +5,25 @@
 #include "Order.h"
 
 int main() {
-    Store myStore;
-    Client moi("Goncalves", "Hugo");
+    store::Store myStore;
 
-    Product product1("PS4", "de sony", 4, 30);
-    Product product2("PS5", "de sony", 5, 300);
-    Product product3("Iphone", "de APPLE", 50, 1300);
-    Product product4("Ipad", "de APPLE", 23, 100);
-    Product product5("Macbook", "de APPLE", 15, 3000);
+    /*std::string saisie;
+
+    do {
+
+        std::cout << "}-------======( BIENVENUE SUR EASYSTORE )======-------{";
+        std::cin >> saisie;
+
+    } while ((saisie != "q") && (saisie != "Q"));*/
+
+
+    client::Client moi("Goncalves", "Hugo");
+
+    product::Product product1("PS4", "de sony", 4, 30);
+    product::Product product2("PS5", "de sony", 5, 300);
+    product::Product product3("Iphone", "de APPLE", 50, 1300);
+    product::Product product4("Ipad", "de APPLE", 23, 100);
+    product::Product product5("Macbook", "de APPLE", 15, 3000);
 
     myStore.addProduct(product1);
     myStore.addProduct(product2);
@@ -20,27 +31,27 @@ int main() {
     myStore.addProduct(product4);
     myStore.addProduct(product5);
 
-    //myStore.printMyProducts();
+    store::printMyProducts(myStore.getProducts());
 
     moi.addProductToCart(product2);
     moi.addProductToCart(product4);
 
     myStore.addClient(&moi);
 
-    Store::addProductToClientCart(&moi, &product1);
-    //myStore.printClientById("5ZY4HSUI");
+    store::Store::addProductToClientCart(&moi, &product1);
+    store::printClientById("5ZY4HSUI", myStore.getClients());
 
-    myStore.printMyClients();
+    store::printMyClients(myStore.getClients());
 
-    Order order1(&moi, moi.getCart());
+    order::Order order1(&moi, moi.getCart());
     myStore.createOrder(&order1);
 
-    Store::acceptOrder(&order1);
-    Store::orderDelivered(&order1);
+    store::Store::acceptOrder(&order1);
+    store::Store::orderDelivered(&order1);
 
-    myStore.printOrders();
+    store::printOrders(myStore.getOrders());
 
-    myStore.printClientOrders(moi);
+    store::printClientOrders(moi, myStore.getOrders());
 
     return 0;
 }

@@ -3,99 +3,110 @@
 //
 
 #include "Store.h"
+namespace store {
 
-Store::Store() = default;
+    Store::Store() = default;
 
-void Store::addProduct(const Product& productToAdd) {
-    _products.push_back(new Product(productToAdd));
-}
-
-void Store::printMyProducts() {
-    for (auto & _product : _products) {
-        std::cout << *_product;
+    void Store::addProduct(const product::Product& productToAdd) {
+        _products.push_back(new product::Product(productToAdd));
     }
-}
 
-void Store::printProductByName(const std::string& nameToSearch) {
-    bool isFound = false;
-    for (auto & _product : _products) {
-        if(_product->getTitle() == nameToSearch) {
-            std::cout << *_product;
-            isFound = true;
+    void Store::setAmountByName(const std::string &nameToSearch, const int &amountToChange) {
+        bool isFound = false;
+        for (auto & _product : _products) {
+            if(_product->getTitle() == nameToSearch) {
+                _product->setAmount(amountToChange);
+                isFound = true;
+            }
         }
+        if(!isFound)
+            std::cout << "Produit inexistant" << std::endl;
     }
-    if(!isFound)
-        std::cout << "Produit introuvable" << std::endl;
-}
 
-void Store::setAmountByName(const std::string &nameToSearch, const int &amountToChange) {
-    bool isFound = false;
-    for (auto & _product : _products) {
-        if(_product->getTitle() == nameToSearch) {
-            _product->setAmount(amountToChange);
-            isFound = true;
-        }
+    void Store::addClient(client::Client* clientToAdd) {
+        _clients.push_back(clientToAdd);
     }
-    if(!isFound)
-        std::cout << "Produit inexistant" << std::endl;
-}
 
-void Store::addClient(Client* clientToAdd) {
-    _clients.push_back(clientToAdd);
-}
-
-void Store::printMyClients() {
-    for (auto & client : _clients) {
-        std::cout << *client;
+    void Store::addProductToClientCart(client::Client* client, product::Product *productToAdd) {
+        client->addProductToCart(*productToAdd);
     }
-}
 
-void Store::printClientById(const std::string &clientIdToPrint) {
-    bool isFound = false;
-    for (auto & client : _clients) {
-        if(client->getId() == clientIdToPrint) {
+    void Store::delProductToClientCart(client::Client *client, product::Product *productToAdd) {
+        client->delProductToCart(*productToAdd);
+    }
+
+    void Store::editAmountCart(client::Client *client, product::Product *productToAdd, const int amountToChange) {
+        client->editAmountCart(*productToAdd, amountToChange);
+    }
+
+    void Store::acceptOrder(order::Order *order) {
+        order->setStatus(true);
+    }
+
+    void Store::orderDelivered(order::Order *order) {
+        order->setDelivered(true);
+    }
+
+    void Store::createOrder(order::Order *order) {
+        _orders.push_back(order);
+    }
+
+    const std::vector<product::Product *> &Store::getProducts() const {
+        return _products;
+    }
+
+    const std::vector<client::Client *> &Store::getClients() const {
+        return _clients;
+    }
+
+    const std::vector<order::Order *> &Store::getOrders() const {
+        return _orders;
+    }
+
+    void printMyProducts(const std::vector<product::Product *>& _products) {
+        for (auto & product : _products)
+            std::cout << *product;
+    }
+
+    void printMyClients(const std::vector<client::Client *>& _clients) {
+        for (auto & client : _clients)
             std::cout << *client;
-            isFound = true;
-        }
     }
-    if(!isFound)
-        std::cout << "Client inexistant" << std::endl;
-}
 
-void Store::printOrders() {
-    for (auto & order : _orders) {
-        std::cout << *order;
-    }
-}
-
-void Store::printClientOrders(const Client &client) {
-    for (auto & order : _orders) {
-        if(order->getClient()->getId() == client.getId())
+    void printOrders(const std::vector<order::Order *> &_orders) {
+        for (auto & order : _orders)
             std::cout << *order;
     }
-}
 
-void Store::addProductToClientCart(Client* client, Product *productToAdd) {
-    client->addProductToCart(*productToAdd);
-}
+    [[maybe_unused]] void printProductByName(const std::string& nameToSearch, const std::vector<product::Product *> &_products) {
+        bool isFound = false;
+        for (auto & _product : _products) {
+            if(_product->getTitle() == nameToSearch) {
+                std::cout << *_product;
+                isFound = true;
+            }
+        }
+        if(!isFound)
+            std::cout << "Produit introuvable" << std::endl;
+    }
 
-void Store::delProductToClientCart(Client *client, Product *productToAdd) {
-    client->delProductToCart(*productToAdd);
-}
+    void printClientById(const std::string &clientIdToPrint, const std::vector<client::Client *>& _clients) {
+        bool isFound = false;
+        for (auto & client : _clients) {
+            if(client->getId() == clientIdToPrint) {
+                std::cout << *client;
+                isFound = true;
+            }
+        }
+        if(!isFound)
+            std::cout << "Client inexistant" << std::endl;
+    }
 
-void Store::editAmountCart(Client *client, Product *productToAdd, const int amountToChange) {
-    client->editAmountCart(*productToAdd, amountToChange);
-}
+    void printClientOrders(const client::Client &client, const std::vector<order::Order *> &_orders) {
+        for (auto & order : _orders) {
+            if(order->getClient()->getId() == client.getId())
+                std::cout << *order;
+        }
+    }
 
-void Store::acceptOrder(Order *order) {
-    order->setStatus(true);
 }
-
-void Store::orderDelivered(Order *order) {
-    order->setDelivered(true);
-}
-
-void Store::createOrder(Order *order) {
-    _orders.push_back(order);
-}
-

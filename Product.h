@@ -8,33 +8,41 @@
 #include <iostream>
 #include <vector>
 
-class Product {
+namespace product {
 
-public:
-    Product(std::string title, std::string desc, int amount, float price);
+    class Product {
 
-    [[nodiscard]] const std::string &getTitle() const;
-    [[nodiscard]] const std::string &getDesc() const;
-    [[nodiscard]] int getAmount() const;
-    [[nodiscard]] float getPrice() const;
-    [[nodiscard]] const std::string &getId() const;
+    public:
+        Product(std::string title, std::string desc, int amount, float price);
 
-    void setAmount(int amount);
+        [[nodiscard]] const std::string &getTitle() const;
 
-    friend std::ostream& operator<<(std::ostream &os, Product &product);
-    friend std::ostream& operator<<(std::ostream &os, const std::vector<Product *>& product);
+        [[nodiscard]] const std::string &getDesc() const;
 
-private:
-    std::string _title;
-    std::string _desc;
-    int _amount;
-    float _price;
-    std::string _id;
+        [[nodiscard]] int getAmount() const;
 
-};
+        [[nodiscard]] float getPrice() const;
 
-[[maybe_unused]] bool isProduct(const std::string& title, const std::string& desc, int amount, float price);
-std::string randomId(const int& len);
+        [[nodiscard]] const std::string &getId() const;
 
+        void setAmount(int amount);
 
+        friend std::ostream &operator<<(std::ostream &os, Product &product);
+
+        friend std::ostream &operator<<(std::ostream &os, const std::vector<Product *> &product);
+
+    private:
+        std::string _title;
+        std::string _desc;
+        int _amount;
+        float _price;
+        std::string _id;
+
+    };
+
+    [[maybe_unused]] bool isProduct(const std::string &title, const std::string &desc, int amount, float price);
+
+    std::string randomId(const int &len);
+
+}
 #endif //TP3_PRODUCT_H

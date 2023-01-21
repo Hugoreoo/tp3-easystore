@@ -10,35 +10,44 @@
 #include "Client.h"
 #include "Order.h"
 
-class Store {
+namespace store {
 
-public:
-    Store();
+    class Store {
 
-    void addProduct(const Product& productToAdd);
-    void printMyProducts();
-    void printMyClients();
-    void printProductByName(const std::string& nameToSearch);
-    void printClientById(const std::string& clientIdToPrint);
-    void printOrders();
-    void printClientOrders(const Client& client);
-    void setAmountByName(const std::string& nameToSearch, const int& amountToChange);
+    public:
+        Store();
 
-    void addClient(Client* clientToAdd);
-    static void addProductToClientCart(Client* client, Product* productToAdd);
-    static void delProductToClientCart(Client *client, Product* productToAdd);
-    static void editAmountCart(Client *client, Product *productToAdd, int amountToChange);
+        [[nodiscard]] const std::vector<product::Product *> &getProducts() const;
+        [[nodiscard]] const std::vector<client::Client *> &getClients() const;
+        [[nodiscard]] const std::vector<order::Order *> &getOrders() const;
 
-    static void acceptOrder(Order *order);
-    static void orderDelivered(Order *order);
+        void addProduct(const product::Product &productToAdd);
 
-    void createOrder(Order* order);
+        void setAmountByName(const std::string &nameToSearch, const int &amountToChange);
+        void addClient(client::Client *clientToAdd);
+        static void addProductToClientCart(client::Client *client, product::Product *productToAdd);
+        static void delProductToClientCart(client::Client *client, product::Product *productToAdd);
+        static void editAmountCart(client::Client *client, product::Product *productToAdd, int amountToChange);
+        static void acceptOrder(order::Order *order);
+        static void orderDelivered(order::Order *order);
+        void createOrder(order::Order *order);
 
-private:
-    std::vector<Product *> _products;
-    std::vector<Client *> _clients;
-    std::vector<Order *> _orders;
-};
+    private:
+        std::vector<product::Product *> _products;
+        std::vector<client::Client *> _clients;
+        std::vector<order::Order *> _orders;
+    };
+
+    //HELPER PRINT
+    [[maybe_unused]] void printMyProducts(const std::vector<product::Product *> &_products);
+    [[maybe_unused]] void printMyClients(const std::vector<client::Client *> &_clients);
+    [[maybe_unused]] void printOrders(const std::vector<order::Order *> &_orders);
+    [[maybe_unused]] void printProductByName(const std::string &nameToSearch, const std::vector<product::Product *> &_products);
+    [[maybe_unused]] void printClientById(const std::string &clientIdToPrint, const std::vector<client::Client *>& _clients);
+    [[maybe_unused]] void printClientOrders(const client::Client &client, const std::vector<order::Order *> &_orders);
+
+    //HELPER
 
 
+}
 #endif //TP3_STORE_H

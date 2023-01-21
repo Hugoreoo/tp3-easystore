@@ -5,53 +5,57 @@
 #include "Order.h"
 #include <utility>
 
-Order::Order(Client *client, std::vector<Product *> products, bool delivered, bool status) : _client(client), _products(std::move(products)), _delivered(delivered), _status(status), _id(
-        randomId(10)) {
-    client->clearCart();
-}
+namespace order {
 
-Client *Order::getClient() const {
-    return _client;
-}
+    Order::Order(client::Client *client, std::vector<product::Product *> products, bool delivered, bool status)
+            : _client(client), _products(std::move(products)), _delivered(delivered), _status(status), _id(
+            product::randomId(10)) {
+        client->clearCart();
+    }
 
-const std::vector<Product *> &Order::getProducts() const {
-    return _products;
-}
+    client::Client *Order::getClient() const {
+        return _client;
+    }
 
-bool Order::isDelivered() const {
-    return _delivered;
-}
+    const std::vector<product::Product *> &Order::getProducts() const {
+        return _products;
+    }
 
-bool Order::getStatus() const {
-    return _status;
-}
+    bool Order::isDelivered() const {
+        return _delivered;
+    }
 
-const std::string &Order::getId() const {
-    return _id;
-}
+    bool Order::getStatus() const {
+        return _status;
+    }
 
-std::ostream &operator<<(std::ostream &os, Order &order) {
-    os << std::endl << "}=======---------| ORDER - " << order.getId() << " |---------======={" << std::endl;
-    if(!order.getStatus())
-        os << "Unverified";
-    else
-        os << "Verified";
-    os << *order.getClient();
-    os << "--------------------" << std::endl;
-    os << "= PRODUCTS ORDERED: " << std::endl;
-    os << order.getProducts();
-    if(order.isDelivered())
-        os << "Delivered" << std::endl;
-    else
-        os << "Not Delivered Yet" << std::endl;
-    return os;
-}
+    const std::string &Order::getId() const {
+        return _id;
+    }
 
-void Order::setDelivered(bool delivered) {
-    _delivered = delivered;
-}
+    std::ostream &operator<<(std::ostream &os, Order &order) {
+        os << std::endl << "}=======---------| ORDER - " << order.getId() << " |---------======={" << std::endl;
+        if (!order.getStatus())
+            os << "Unverified";
+        else
+            os << "Verified";
+        os << *order.getClient();
+        os << "--------------------" << std::endl;
+        os << "= PRODUCTS ORDERED: " << std::endl;
+        os << order.getProducts();
+        if (order.isDelivered())
+            os << "Delivered" << std::endl;
+        else
+            os << "Not Delivered Yet" << std::endl;
+        return os;
+    }
 
-void Order::setStatus(bool status) {
-    _status = status;
-}
+    void Order::setDelivered(bool delivered) {
+        _delivered = delivered;
+    }
 
+    void Order::setStatus(bool status) {
+        _status = status;
+    }
+
+}
