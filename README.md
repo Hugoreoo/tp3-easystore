@@ -1,6 +1,6 @@
 # TP3 C++ : EasyStore
 
-Notre TP a pour but de développer une application de commerce virtuel appelée EasyStore.
+Notre TP a pour but de développer une application de commerce virtuelle appelée EasyStore.
 
 ## Pourquoi avoir choisi ce TP
 
