@@ -10,6 +10,10 @@ Nous avons choisi ce TP car il nous semblait être un bon moyen de progresser da
 
 Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail en équipe basée sur la répartition des tâches par question. Chacun de nous a été assigné à une question spécifique et nous avons travaillé sur cette question individuellement en utilisant nos branches respectives sur notre GitHub. Une fois que chacun avait terminé sa question, nous fusionnions, avec le merge, nos travaux sur la branche principale de notre répertoire, ce qui nous a permis de continuer à avancer ensemble sur le projet. Cette méthode nous a permis de diviser le travail en petites tâches gérables et de travailler de manière efficace en équipe.
 
+## Qu'est ce qui nous différencie ?
+
+La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes. 
+
 ## Quels outils avons nous utilisés ?
 
 Pour réaliser notre projet à plusieurs, nous avons choisi d'utiliser l'outil Git et son site GitHub. Nous avons pu bénéficier de plusieurs avantages. Tout d'abord, cet outil nous a permis de travailler efficacement à plusieurs en nous permettant de nous répartir le travail à l'aide des branches comme cité précédemment. Chacun de nous a pu travailler sur une question spécifique dans sa propre branche et ensuite fusionner son travail avec la branche principale. Cela nous a permis de mieux organiser notre travail et de limiter les conflits de code.  
