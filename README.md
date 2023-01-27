@@ -21,7 +21,7 @@ De plus, Git nous a également permis de gérer efficacement le « versionning �
 Enfin, l'utilisation de Git nous a également offert la possibilité de travailler à distance, en équipe, sans devoir nous synchroniser physiquement.  
 Concernant les outils tels que les IDE, nous avons eu la possibilité d’utiliser CLion ainsi que VisualStudioCode qui sont deux IDE très puissants nous fournissant une grande aide pour la réalisation de ce TP.
 
-## Description de notre programme
+## Déscription de notre programme
 
 ### Classe Client:
 
