@@ -10,21 +10,21 @@ Nous avons choisi ce TP car il nous semblait être un bon moyen de progresser da
 
 Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail en équipe basée sur la répartition des tâches par question. Chacun de nous a été assigné à une question spécifique et nous avons travaillé sur cette question individuellement en utilisant nos branches respectives sur notre GitHub. Une fois que chacun avait terminé sa question, nous fusionnions, avec le merge, nos travaux sur la branche principale de notre répertoire, ce qui nous a permis de continuer à avancer ensemble sur le projet. Cette méthode nous a permis de diviser le travail en petites tâches gérables et de travailler de manière efficace en équipe.
 
-## Qu'est ce qui nous différencie ?
+## Qu'est-ce qui nous différencie ?
 
 La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes.  
 De plus, nous avons développé un système d'affichage puissant qui permet aux administrateurs de la boutique de gérer ses clients, gérer les commandes ainsi que gérer sa boutique, tout cela dans le main à l'aide de différentes fonctions accessible dans un fichier dédier:  _menu_function.cpp_ .  
 Nous avons utilisé des mots-clés récemment proposés par c++ tel que __[[nodiscard]]__ ou encore __[[maybe_unused]]__ qui permette de réduire les warnings lors de la compilation du programme.  
 Nous avons également rendu notre programme le plus robuste possible en évitant un maximum les fuites de données en utilisant des références constantes dans les paramètres de certaines de nos méthodes/fonctions, mais également en rendant constante certaines de nos méthodes.
 
-## Quels outils avons nous utilisés ?
+## Quels outils avons-nous utilisés ?
 
 Pour réaliser notre projet à plusieurs, nous avons choisi d'utiliser l'outil Git et son site GitHub. Nous avons pu bénéficier de plusieurs avantages. Tout d'abord, cet outil nous a permis de travailler efficacement à plusieurs en nous permettant de nous répartir le travail à l'aide des branches comme cité précédemment. Chacun de nous a pu travailler sur une question spécifique dans sa propre branche et ensuite fusionner son travail avec la branche principale. Cela nous a permis de mieux organiser notre travail et de limiter les conflits de code.  
 De plus, Git nous a également permis de gérer efficacement le « versionning » de notre projet. Il a enregistré toutes les modifications apportées au code au fil du temps, ce qui nous a permis de revenir facilement à des versions précédentes de notre programme si nécessaire. Cela nous a également permis de conserver une sauvegarde générale de notre programme à tout moment.  
 Enfin, l'utilisation de Git nous a également offert la possibilité de travailler à distance, en équipe, sans devoir nous synchroniser physiquement.  
 Concernant les outils tels que les IDE, nous avons eu la possibilité d’utiliser CLion ainsi que VisualStudioCode qui sont deux IDE très puissants nous fournissant une grande aide pour la réalisation de ce TP.
 
-## Déscription de notre programme
+## Description de notre programme
 
 ### Classe Client:
 
