@@ -12,9 +12,9 @@ Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail 
 
 ## Quels outils avons nous utilisés ?
 
-Pour réaliser notre projet à plusieurs, nous avons choisi d'utiliser l'outil Git et son site GitHub. Nous avons pu bénéficier de plusieurs avantages. Tout d'abord, cet outil nous a permis de travailler efficacement à plusieurs en nous permettant de nous répartir le travail à l'aide des branches comme cité précédemment. Chacun de nous a pu travailler sur une question spécifique dans sa propre branche et ensuite fusionner son travail avec la branche principale. Cela nous a permis de mieux organiser notre travail et de limiter les conflits de code.
-De plus, Git nous a également permis de gérer efficacement le « versionning » de notre projet. Il a enregistré toutes les modifications apportées au code au fil du temps, ce qui nous a permis de revenir facilement à des versions précédentes de notre programme si nécessaire. Cela nous a également permis de conserver une sauvegarde générale de notre programme à tout moment.
-Enfin, l'utilisation de Git nous a également offert la possibilité de travailler à distance, en équipe, sans devoir nous synchroniser physiquement.
+Pour réaliser notre projet à plusieurs, nous avons choisi d'utiliser l'outil Git et son site GitHub. Nous avons pu bénéficier de plusieurs avantages. Tout d'abord, cet outil nous a permis de travailler efficacement à plusieurs en nous permettant de nous répartir le travail à l'aide des branches comme cité précédemment. Chacun de nous a pu travailler sur une question spécifique dans sa propre branche et ensuite fusionner son travail avec la branche principale. Cela nous a permis de mieux organiser notre travail et de limiter les conflits de code.  
+De plus, Git nous a également permis de gérer efficacement le « versionning » de notre projet. Il a enregistré toutes les modifications apportées au code au fil du temps, ce qui nous a permis de revenir facilement à des versions précédentes de notre programme si nécessaire. Cela nous a également permis de conserver une sauvegarde générale de notre programme à tout moment.  
+Enfin, l'utilisation de Git nous a également offert la possibilité de travailler à distance, en équipe, sans devoir nous synchroniser physiquement.  
 Concernant les outils tels que les IDE, nous avons eu la possibilité d’utiliser CLion ainsi que VisualStudioCode qui sont deux IDE très puissants nous fournissant une grande aide pour la réalisation de ce TP.
 
 ## Description de notre programme
