@@ -14,8 +14,8 @@ Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail 
 
 La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes.  
 De plus, nous avons développé un système d'affichage puissant qui permet aux administrateurs de la boutique de gérer ses clients, gérer les commandes ainsi que gérer sa boutique, tout cela dans le main à l'aide de différentes fonctions accessible dans un fichier dédier:  _menu_function.cpp_ .  
-Nous avons utilisé des mots clés récemment proposé par c++ tel que __[[nodiscard]]__ ou encore __[[maybe_unused]]__ qui permmette de réduire les warnings lors de la compilation du programme.  
-Nous avons également rendu notre programme le plus robuste possible en éviant un maximum les fuites de données en utilisant des références constantes dans les paramètres de certaines de nos méthodes/fonctions mais également en rendant constante certaines de nos méthodes.
+Nous avons utilisé des mots-clés récemment proposés par c++ tel que __[[nodiscard]]__ ou encore __[[maybe_unused]]__ qui permette de réduire les warnings lors de la compilation du programme.  
+Nous avons également rendu notre programme le plus robuste possible en évitant un maximum les fuites de données en utilisant des références constantes dans les paramètres de certaines de nos méthodes/fonctions, mais également en rendant constante certaines de nos méthodes.
 
 ## Quels outils avons nous utilisés ?
 
