@@ -12,7 +12,8 @@ Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail 
 
 ## Qu'est ce qui nous différencie ?
 
-La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes. 
+La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes.  
+De plus, nous avons développé un système d'affichage puissant qui permet aux administrateurs de la boutique de gérer ses clients, gérer les commandes ainsi que gérer sa boutique, tout cela dans le main à l'aide de différentes fonctions accessible dans un fichier dédier: __menu_function.cpp__.
 
 ## Quels outils avons nous utilisés ?
 
