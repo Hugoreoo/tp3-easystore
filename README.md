@@ -16,3 +16,12 @@ Pour réaliser notre projet à plusieurs, nous avons choisi d'utiliser l'outil G
 De plus, Git nous a également permis de gérer efficacement le « versionning » de notre projet. Il a enregistré toutes les modifications apportées au code au fil du temps, ce qui nous a permis de revenir facilement à des versions précédentes de notre programme si nécessaire. Cela nous a également permis de conserver une sauvegarde générale de notre programme à tout moment.
 Enfin, l'utilisation de Git nous a également offert la possibilité de travailler à distance, en équipe, sans devoir nous synchroniser physiquement.
 Concernant les outils tels que les IDE, nous avons eu la possibilité d’utiliser CLion ainsi que VisualStudioCode qui sont deux IDE très puissants nous fournissant une grande aide pour la réalisation de ce TP.
+
+## Description de notre programme
+
+### Classe Client:
+
+Nous avons créé la classe Client pour que le système de gestion de magasin soit. Cette classe Client contient des informations sur nos clients, telles que son nom, son prénom et un identifiant unique généré automatiquement. Elle contient également un panier d'achat qui est un tableau de pointeurs vers des objets de la classe Produit.
+La classe Client possède plusieurs méthodes publiques qui permettent de gérer le panier d'achat du client. La méthode __addProductToCart__ permet d'ajouter un produit au panier, tandis que la méthode __clearCart__ permet de vider le panier. La méthode delProductToCart permet de supprimer un produit du panier d'achat.
+Nous avons également surchargé l'opérateur « __<<__ » pour pouvoir afficher les informations du client dans un flux de sortie (un terminal). Cela permet d'afficher facilement les informations du client en utilisant un simple appel de la méthode « __std::cout__ ».
+Enfin, nous avons écrit une fonction helper __isClient__ qui prend en entrée le nom et le prénom d’un client et qui retourne vrai si les informations du client son correcte avec nos attributs, et faux sinon. Nous avons également écrit une fonction helper __editAmountCart__ pour pouvoir changer la quantité d'un produit dans le panier d'achat.
