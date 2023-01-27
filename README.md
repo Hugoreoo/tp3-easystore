@@ -13,7 +13,7 @@ Pour la réalisation de ce TP, nous avons utilisé une méthodologie de travail 
 ## Qu'est ce qui nous différencie ?
 
 La manière dont nous avons implémenté les classes Client, Product, Store et Order montre une bonne compréhension de la programmation orientée objet et une utilisation efficace des différents concepts tels que les constructeurs, les méthodes d'accès (getters), les opérateurs de surcharge, etc. Nous avons utilisé également des concepts comme les pointeurs et les références pour gérer les relations entre les objets de différentes classes.  
-De plus, nous avons développé un système d'affichage puissant qui permet aux administrateurs de la boutique de gérer ses clients, gérer les commandes ainsi que gérer sa boutique, tout cela dans le main à l'aide de différentes fonctions accessible dans un fichier dédier: __menu_function.cpp__.
+De plus, nous avons développé un système d'affichage puissant qui permet aux administrateurs de la boutique de gérer ses clients, gérer les commandes ainsi que gérer sa boutique, tout cela dans le main à l'aide de différentes fonctions accessible dans un fichier dédier: _ _menu_function.cpp_ _.
 
 ## Quels outils avons nous utilisés ?
 
@@ -27,9 +27,9 @@ Concernant les outils tels que les IDE, nous avons eu la possibilité d’utilis
 ### Classe Client:
 
 Nous avons créé la classe Client pour que le système de gestion de magasin soit. Cette classe Client contient des informations sur nos clients, telles que son nom, son prénom et un identifiant unique généré automatiquement. Elle contient également un panier d'achat qui est un tableau de pointeurs vers des objets de la classe Produit.  
-La classe Client possède plusieurs méthodes publiques qui permettent de gérer le panier d'achat du client. La méthode __addProductToCart__ permet d'ajouter un produit au panier, tandis que la méthode __clearCart__ permet de vider le panier. La méthode delProductToCart permet de supprimer un produit du panier d'achat.  
-Nous avons également surchargé l'opérateur « __<<__ » pour pouvoir afficher les informations du client dans un flux de sortie (un terminal). Cela permet d'afficher facilement les informations du client en utilisant un simple appel de la méthode « __std::cout__ ».  
-Enfin, nous avons écrit une fonction helper __isClient__ qui prend en entrée le nom et le prénom d’un client et qui retourne vrai si les informations du client son correcte avec nos attributs, et faux sinon. Nous avons également écrit une fonction helper __editAmountCart__ pour pouvoir changer la quantité d'un produit dans le panier d'achat.
+La classe Client possède plusieurs méthodes publiques qui permettent de gérer le panier d'achat du client. La méthode _ _addProductToCart_ _ permet d'ajouter un produit au panier, tandis que la méthode _ _clearCart_ _ permet de vider le panier. La méthode delProductToCart permet de supprimer un produit du panier d'achat.  
+Nous avons également surchargé l'opérateur « _ _<<_ _ » pour pouvoir afficher les informations du client dans un flux de sortie (un terminal). Cela permet d'afficher facilement les informations du client en utilisant un simple appel de la méthode « _ _std::cout_ _ ».  
+Enfin, nous avons écrit une fonction helper __isClient__ qui prend en entrée le nom et le prénom d’un client et qui retourne vrai si les informations du client son correcte avec nos attributs, et faux sinon. Nous avons également écrit une fonction helper _ _editAmountCart_ _ pour pouvoir changer la quantité d'un produit dans le panier d'achat.
 
 ### Classe Product:
 
